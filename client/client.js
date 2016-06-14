@@ -12,7 +12,7 @@ IVLE = {
 
         // Fetch the service configuration from the database.
         // If none exist, throw the default ServiceConfiguration error.
-        var config = ServiceConfiguration.configurations.findOne({service: IVLE.serviceName});
+        let config = ServiceConfiguration.configurations.findOne({service: IVLE.serviceName});
         if (!config) {
             credentialRequestCompleteCallback &&
             credentialRequestCompleteCallback(new ServiceConfiguration.ConfigError());
@@ -21,11 +21,11 @@ IVLE = {
 
         // Pass in necessary options for OAuth.
         // Note that credentialToken and state are never used by IVLE Login's OAuth flow, but are required by Meteor's OAuth package.
-        var credentialToken = Random.id(),
-            loginStyle = OAuth._loginStyle(IVLE.serviceName, config, options),
-            loginUrl = "https://ivle.nus.edu.sg/api/login/?apikey=" + encodeURIComponent(config.apiKey) + "&url=" +
-                       ( OAuth._redirectUri(IVLE.serviceName, config) + encodeURIComponent("&state=" + OAuth._stateParam(loginStyle, credentialToken)) ),
-            popupOptions = { width: 445, height: 625 };
+        const credentialToken = Random.id(),
+              loginStyle = OAuth._loginStyle(IVLE.serviceName, config, options),
+              loginUrl = "https://ivle.nus.edu.sg/api/login/?apikey=" + encodeURIComponent(config.apiKey) + "&url=" +
+                         ( OAuth._redirectUri(IVLE.serviceName, config) + encodeURIComponent("&state=" + OAuth._stateParam(loginStyle, credentialToken)) ),
+              popupOptions = { width: 445, height: 625 };
 
         // Launch popup/redirect for authentication with IVLE.
         OAuth.launchLogin({
