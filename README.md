@@ -3,21 +3,22 @@ A package that uses the NUS IVLE LAPI for OAuth login flow and IVLE API calls.
 
 ## Getting Started
     meteor add irvinlim:ivle
+    meteor add service-configuration
 
 ## Basic Usage
 ### Configuration
-Firstly, make sure that you define your IVLE LAPI key in `settings.json` (or equivalent), as follows. If you don't have a key you can request one [here](http://ivle.nus.edu.sg/LAPI/default.aspx).
+On the server, add service configurations for IVLE:
 
-    {
-      "public": {},
-      "private": {
-        "oAuth": {
-          "ivle": {
-            "apiKey": "<YOUR_LAPI_KEY>"
-          }
-        }
-      }
-    }
+    ServiceConfiguration.configurations.remove({
+        service: 'ivle'
+    });
+     
+    ServiceConfiguration.configurations.insert({
+        service: 'ivle',
+        apiKey: '<API_KEY>'
+    });
+
+Make sure that you define your IVLE LAPI key in `settings.json` (or equivalent), instead of checking your API key into version control. If you don't have a key you can request one [here](http://ivle.nus.edu.sg/LAPI/default.aspx).
 
 ### OAuth Login
 You can use the following to initiate the OAuth login flow on the client:

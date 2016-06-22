@@ -14,6 +14,12 @@ export const extend = function(a, b){
     return a;
 };
 
+/**
+ * Maps object keys using a given function.
+ * @param  {Object}   obj   Target object
+ * @param  {Function} fn    Mapping function that takes in an object key, and returns a new object key.
+ * @return {Object}         Newly constructed object with mapped keys. Original object is not modified.
+ */
 export const map_obj_keys = function(obj, fn) {
     return Object.keys(myObject).reduce(function(accum, curr) {
         accum[fn(curr)] = obj[curr];
@@ -21,6 +27,12 @@ export const map_obj_keys = function(obj, fn) {
     }, {});
 }
 
+/**
+ * Maps object properties using a given function.
+ * @param  {Object}   obj   Target object
+ * @param  {Function} fn    Mapping function that takes in an object property value, and returns a new value to be assigned.
+ * @return {Object}         Newly constructed object with mapped properties. Original object is not modified.
+ */
 export const map_obj = function(obj, fn) {
     return Object.keys(myObject).reduce(function(accum, curr) {
         accum[curr] = fn(obj[curr]);
