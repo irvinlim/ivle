@@ -1,6 +1,6 @@
 Package.describe({
   name: 'irvinlim:ivle',
-  version: '0.0.3',
+  version: '0.0.4',
   summary: 'Wrapper package for NUS IVLE LAPI services.',
   git: 'https://github.com/irvinlim/meteor-ivle',
   documentation: 'README.md'

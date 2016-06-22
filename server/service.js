@@ -56,5 +56,5 @@ const getToken = function(query) {
 }
 
 const getProfile = function(query) {
-    return IVLE.get.Profile.Profile_View({ accessToken: query.token });
+    return IVLE.get.Profile.Profile_View({ accessToken: query.token })[0];
 }
